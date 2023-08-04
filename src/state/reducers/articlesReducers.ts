@@ -7,8 +7,14 @@ interface ArticlesState {
     data: string[];
 }
 
+const initialState = {
+    loading: false,
+    error: null,
+    data: []
+}
+
 const reducer = (
-    state: ArticlesState,
+    state: ArticlesState = initialState,
     action: Action
     ): ArticlesState => {
 
