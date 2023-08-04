@@ -5,36 +5,35 @@ import { Action } from '../actions';
 
 export const searchArticles = (term: string) => {
     return async (dispatch: Dispatch<Action>) => {
-        dispatch({
-            type: ActionType.SEARCH_ARTICLES,
-        });
+    dispatch({
+        type: ActionType.SEARCH_ARTICLES,
+    });
 
-        try {
-            const { data } = await axios.get(
-                'https://registry.npmjs.org/-/v1/search',
-                {
-                params: {
-                    text: term
-                },
-            }
+    try {
+        const { data } = await axios.get(
+        'https://registry.npmjs.org/-/v1/search',
+        // 'https://api.nytimes.com/svc/search/v2/articlesearch.json',
+        {
+            params: {
+            text: term,
+            },
+        }
         );
 
-            const names = data.objects.map(( result:any ) => {
-                return result.package.name;
-            });
+        const names = data.objects.map((result: any) => {
+        return result.package.name;
+        });
 
-            dispatch({
-                type: ActionType.SEARCH_ARTICLES_SUCCESS,
-                payload: names,
-            });
+        dispatch({
+        type: ActionType.SEARCH_ARTICLES_SUCCESS,
+        payload: names,
+        });
 
-        } catch (err) {
-            if (err instanceof Error) {
+        } catch (error: any) {
             dispatch({
-                type: ActionType.SEARCH_ARTICLES_ERROR,
-                payload: err.message
-                });
-            }
+            type: ActionType.SEARCH_ARTICLES_ERROR,
+            payload: error.message,
+            });
         }
     };
 };
