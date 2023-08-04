@@ -1,13 +1,13 @@
 import { useState} from 'react';
-import { useSelector } from 'react-redux';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useActions } from '../hooks/useActions';
 
 const ArticlesList: React.FC = () => {
 
     const [term, setTerm] = useState('');
     const { searchArticles } = useActions();
-    const state = useSelector((state: any) => state.articles);
-    console.log(state);
+    const {data, error, loading } = useTypedSelector(
+        (state) => state.articles);
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -21,6 +21,9 @@ const ArticlesList: React.FC = () => {
             <input />
             <button> Search</button>
         </form>
+        {error && <h3>{error}</h3>}
+        {loading && <h3>Loading...</h3>}
+        {!error && !loading && data}
     </div>
     );
 };
