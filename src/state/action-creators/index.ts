@@ -4,7 +4,7 @@ import { ActionType } from '../action-types';
 import { Action } from '../actions';
 
 export const searchArticles = (term: string) => {
-    return async(dispatch: Dispatch<Action>) => {
+    return async (dispatch: Dispatch<Action>) => {
         dispatch({
             type: ActionType.SEARCH_ARTICLES,
         });
@@ -19,7 +19,7 @@ export const searchArticles = (term: string) => {
             }
         );
 
-            const names = data.objects.map((result:any) => {
+            const names = data.objects.map(( result:any ) => {
                 return result.package.name;
             });
 
@@ -28,11 +28,13 @@ export const searchArticles = (term: string) => {
                 payload: names,
             });
 
-        } catch (err: any) {
+        } catch (err) {
+            if (err instanceof Error) {
             dispatch({
                 type: ActionType.SEARCH_ARTICLES_ERROR,
                 payload: err.message
-            });
+                });
+            }
         }
-    }
-}
+    };
+};

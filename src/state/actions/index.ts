@@ -13,6 +13,7 @@ interface SearchArticlesErrorAction {
     type: ActionType.SEARCH_ARTICLES_ERROR;
     payload: string;
 }
+
 export type Action =
     | SearchArticlesAction
     | SearchArticlesSuccessAction

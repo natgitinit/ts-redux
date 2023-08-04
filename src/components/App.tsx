@@ -3,7 +3,7 @@ import { store } from '../state';
 import ArticlesList from './ArticlesList';
 
 const App = () => {
-  return ( 
+  return (
   <Provider store={store}>
     <div>
       <h1>Search For an Article</h1>
