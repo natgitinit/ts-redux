@@ -6,7 +6,7 @@ const ArticlesList: React.FC = () => {
 
     const [term, setTerm] = useState('');
     const { searchArticles } = useActions();
-    const state = useSelector((state) => state);
+    const state = useSelector((state: any) => state.articles);
     console.log(state);
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
