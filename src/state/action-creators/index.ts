@@ -20,6 +20,7 @@ export const searchArticles = (term: string) => {
         );
 
         const names = data.objects.map((result: any) => {
+        console.log("RETURNED DATA", data.package.name)
         return result.package.name;
         });
 
