@@ -23,7 +23,8 @@ const ArticlesList: React.FC = () => {
         </form>
         {error && <h3>{error}</h3>}
         {loading && <h3>Loading...</h3>}
-        {!error && !loading && data.map((name) => <div key={name}>{name}</div>)}
+        {!error && !loading && data.map((abstract) => <div key={abstract}>{abstract}</div>) }
+        {/* { !error && !loading && data } */}
     </div>
     );
 };

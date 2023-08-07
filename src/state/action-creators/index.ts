@@ -10,23 +10,31 @@ export const searchArticles = (term: string) => {
     });
 
     try {
-        const { data } = await axios.get(
-        'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=books&api-key=oP7XpHLVCCywNAmZwcNEI2Wa8pq5HfoH',
+        let data: any = {};
+        data = await axios.get(
+            'https://api.nytimes.com/svc/search/v2/articlesearch.json?',
         {
             params: {
-            text: term,
+            'api-key': 'oP7XpHLVCCywNAmZwcNEI2Wa8pq5HfoH',
+            q: term,
             },
-        }
-        );
-
-        const names = data.objects.map((result: any) => {
-        console.log("RETURNED DATA", data.package.name)
-        return result.package.name;
         });
+
+        console.log("BEGIN HTTP GET");
+        let obj = data;
+        console.log("OBJ", obj);
+        const copyright = obj['copyright'];
+        console.log("Copyright", copyright);
+        console.log("DATA", data);
+
+        const docs = data.data.response.docs.map((result: any) => {
+            console.log("result", result);
+            return result.abstract;
+        })
 
         dispatch({
         type: ActionType.SEARCH_ARTICLES_SUCCESS,
-        payload: names,
+        payload: docs,
         });
 
         } catch (error: any) {
