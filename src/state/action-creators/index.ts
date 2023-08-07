@@ -11,7 +11,7 @@ export const searchArticles = (term: string) => {
 
     try {
         const { data } = await axios.get(
-        'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=oP7XpHLVCCywNAmZwcNEI2Wa8pq5HfoH',
+        'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=books&api-key=oP7XpHLVCCywNAmZwcNEI2Wa8pq5HfoH',
         {
             params: {
             text: term,
