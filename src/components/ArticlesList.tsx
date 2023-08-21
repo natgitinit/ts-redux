@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useActions } from '../hooks/useActions';
+import ArticleCard from './ArticleCard';
 
 const ArticlesList: React.FC = () => {
     const [term, setTerm] = useState('');
     const { searchArticles } = useActions();
-    const { data, error, loading } = useTypedSelector(
+    const { articles, error, loading } = useTypedSelector(
     (state) => state.articles
     );
 
@@ -23,7 +24,7 @@ const ArticlesList: React.FC = () => {
         </form>
         {error && <h3>{error}</h3>}
         {loading && <h3>Loading...</h3>}
-        {!error && !loading && data.map((abstract) => <div key={abstract}>{abstract}</div>) }
+        {!error && !loading && articles.map((abstract, index) => <div key={index}><ArticleCard/> </div>) }
         {/* { !error && !loading && data } */}
     </div>
     );

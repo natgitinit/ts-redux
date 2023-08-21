@@ -29,7 +29,7 @@ export const searchArticles = (term: string) => {
 
         const docs = data.data.response.docs.map((result: any) => {
             console.log("result", result);
-            return result.abstract;
+            return result;
         })
 
         dispatch({

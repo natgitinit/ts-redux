@@ -4,13 +4,13 @@ import { Action } from '../actions';
 interface ArticlesState {
     loading: boolean;
     error: string | null;
-    data: string[];
+    articles: string[];
 }
 
 const initialState = {
     loading: false,
     error: null,
-    data: [],
+    articles: [],
 }
 
 const reducer = (
@@ -20,11 +20,11 @@ const reducer = (
 
     switch (action.type) {
         case ActionType.SEARCH_ARTICLES:
-            return { loading: true, error: null, data: [] };
+            return { loading: true, error: null, articles: [] };
         case ActionType.SEARCH_ARTICLES_SUCCESS:
-            return { loading: false, error: null, data: action.payload };
+            return { loading: false, error: null, articles: action.payload };
         case ActionType.SEARCH_ARTICLES_ERROR:
-            return { loading: false, error: action.payload, data: [] };
+            return { loading: false, error: action.payload, articles: [] };
         default:
             return state;
     }
