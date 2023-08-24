@@ -1,18 +1,17 @@
 import { Provider } from 'react-redux';
 import { store } from '../state';
 import ArticlesList from './ArticlesList';
-import { Theme } from '@radix-ui/themes';
+import '../App.css';
+
 
 const App = () => {
   return (
-  <Theme>
     <Provider store={store}>
       <div>
         <h1>Search For an Article</h1>
         <ArticlesList/>
       </div>
     </Provider>
-  </Theme>
   );
 };
 

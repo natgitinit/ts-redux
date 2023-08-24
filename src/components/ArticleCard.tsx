@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { RootStateOrAny, connect } from 'react-redux';
-
+import '../Card.css';
 interface Article {
     multimedia: {
         url: string;
@@ -21,13 +21,15 @@ class ArticleCard extends Component<ArticleCardProps> {
     generateArticleCards = () => {
         return this.props.articles.map((article, index) => {
                 return (
-                    <div> {article.abstract} </div>
+                    <div className="card-container" key={index}>
+                        <div className="card-title">{article.abstract} </div>
+                    </div>
                 )
         });
     };
 
     render() {
-        return <div itemsPerRow={3} size="medium">{this.generateArticleCards()}</div>
+        return <div>{this.generateArticleCards()}</div>
     }
 }
 
