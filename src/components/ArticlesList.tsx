@@ -24,7 +24,12 @@ const ArticlesList: React.FC = () => {
         </form>
         {error && <h3>{error}</h3>}
         {loading && <h3>Loading...</h3>}
-        {!error && !loading && articles.map((abstract, index) => <div key={index}><ArticleCard/> </div>) }
+        {!error && !loading && articles.map((abstract, index) => 
+            <div className="row" key={index}> 
+                <div className="container">
+                    <div className="column"><ArticleCard/></div>
+                </div>
+            </div>) }
         {/* { !error && !loading && data } */}
     </div>
     );
