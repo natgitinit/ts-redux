@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { RootStateOrAny, connect } from 'react-redux';
-import '../Card.css';
+import '../Card.scss';
 interface Article {
     multimedia: {
         url: string;
     }[];
     url: string;
     headline: string[];
-    byline: string;
+    lead_paragraph: string;
     abstract: string;
 }
 
@@ -19,12 +19,19 @@ interface ArticleCardProps {
 class ArticleCard extends Component<ArticleCardProps> {
 
     generateArticleCards = () => {
-        return this.props.articles.map((article, index) => {
-                return (
-                    <div className="card-container" key={index}>
-                        <div className="card-title">{article.abstract} </div>
-                    </div>
-                )
+        return this.props.articles.map ((article) => {
+                let imgResult = article.multimedia[2].url
+                if(imgResult) {
+                    return (
+                        <div className="card-container">
+                            <img src={imgResult}  alt="article-url" className="card-img" />
+                            <div className="card-title">{article.abstract} </div>
+                            <div className="card-paragraph">{article.lead_paragraph} </div>
+                        </div>
+                    )
+                } else {
+                    return;
+                }
         });
     };
 

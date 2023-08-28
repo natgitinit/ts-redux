@@ -17,21 +17,17 @@ const ArticlesList: React.FC = () => {
     };
 
     return (
-    <div>
-        <form onSubmit={onSubmit}>
-        <input value={term} onChange={(e) => setTerm(e.target.value)} />
-        <button>Search</button>
-        </form>
-        {error && <h3>{error}</h3>}
-        {loading && <h3>Loading...</h3>}
-        {!error && !loading && articles.map((abstract, index) => 
-            <div className="row" key={index}> 
-                <div className="container">
-                    <div className="column"><ArticleCard/></div>
-                </div>
-            </div>) }
-        {/* { !error && !loading && data } */}
-    </div>
+        <div className="card-column">
+            <form onSubmit={onSubmit}>
+            <input value={term} onChange={(e) => setTerm(e.target.value)} />
+            <button>Search</button>
+            </form>
+            {error && <h3>{error}</h3>}
+            {loading && <h3>Loading...</h3>}
+            {!error && !loading && articles.map((index) =>
+                <div className="article-card" key={index}><ArticleCard/></div>
+            )}
+        </div>
     );
 };
 
